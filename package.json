@@ -1,0 +1,27 @@
+{
+  "name": "populr-data",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.12.2",
+    "express": "^4.12.3",
+    "morgan": "^1.5.2",
+    "redis": "^0.12.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/persnickety-vagabond/populr-data.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/persnickety-vagabond/populr-data/issues"
+  },
+  "homepage": "https://github.com/persnickety-vagabond/populr-data"
+}
