@@ -13,6 +13,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
+var db = require('./db.js');
 
 /* * Middleware * */
 
@@ -21,33 +22,30 @@ app.use(bodyParser.json());
 
 /* * API Routing * */
 
-var topRouter = express.Router();
-app.use('/api/top', topRouter);
-// require('./router.js').top(topRouter);
+app.get(['/', '/top'], function(req, res){
+  db.getTop().then(function(data){
+    res.json(data);
+  });
+});
 
-var peopleRouter = express.Router();
-app.use('/api/people', peopleRouter);
-// require('./router.js').people(peopleRouter);
+app.get('/people/*', function(req, res){
+  db.getPerson(req.url.slice(8)).then(function(data){
+    res.json(data);
+  });  
+});
 
-var twitterRouter = express.Router();
-app.use('/api/twitter', twitterRouter);
-// require('./router.js').twitter(twitterRouter);
+app.post('/top', function(req, res){
+  db.setTop(req.body);
+  res.send('OK');
+});
 
-var contextRouter = express.Router();
-app.use('/api/context', contextRouter);
-// require('./router.js').context(contextRouter);
-
-var sitesRouter = express.Router();
-app.use('/api/sites', sitesRouter);
-// require('./router.js').sites(sitesRouter);
-
-var facebookRouter = express.Router();
-app.use('/api/facebook', facebookRouter);
-// require('./router.js').facebook(facebookRouter);
+app.post('/people', function(req, res){
+  db.setPerson(req.body.firstName, req.body.details);
+  res.send('OK');
+});  
 
 
-
-var port = process.env.PORT || 9000;
+var port = process.env.PORT || 9100;
 
 app.listen(port, function() {
   console.log('listening on', port);
