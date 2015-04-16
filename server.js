@@ -24,11 +24,11 @@ app.use(bodyParser.json());
 
 /* * API Routing * */
 
-app.get(['/', '/top'], function(req, res){
+app.get('/top', function(req, res){
     console.log('BEFORE');
   db.getTop().then(function(data){
     console.log('inside');
-    res.json(data);
+    res.send(data);
     console.log('after')
   });
 });
