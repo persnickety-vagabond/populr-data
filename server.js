@@ -19,7 +19,7 @@ var cors = require('cors');
 /* * Middleware * */
 
 module.exports = app = express();
-app.use(cors);
+app.use(cors());
 app.use(bodyParser.json());
 
 /* * API Routing * */
