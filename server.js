@@ -14,10 +14,12 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var db = require('./db.js');
+var cors = require('cors');
 
 /* * Middleware * */
 
 module.exports = app = express();
+app.use(cors);
 app.use(bodyParser.json());
 
 /* * API Routing * */
