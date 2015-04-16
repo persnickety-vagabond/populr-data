@@ -39,15 +39,15 @@ app.get('/people/*', function(req, res){
   });  
 });
 
-app.post('/top', function(req, res){
-  db.setTop(req.body);
-  res.send('OK');
-});
+// app.post('/top', function(req, res){
+//   db.setTop(req.body);
+//   res.send('OK');
+// });
 
-app.post('/people', function(req, res){
-  db.setPerson(req.body.firstName, req.body.details);
-  res.send('OK');
-});  
+// app.post('/people', function(req, res){
+//   db.setPerson(req.body.firstName, req.body.details);
+//   res.send('OK');
+// });  
 
 
 var port = process.env.PORT || 9100;
