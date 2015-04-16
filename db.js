@@ -2,10 +2,11 @@ var redis = require('then-redis');
 var db = {};
 
 // Creates client and connects
-var client = redis.createClient();
-if(process.env.REDISCLOUD_URL){
-  var client = redis.createClient(process.env.REDISCLOUD_URL);
-}
+var client = redis.createClient({
+  host: process.env.REDISCLOUD_URL || '',
+  port: '15340',
+  password: process.env.REDISCLOUD_PASSWORD || ''
+});
 // Gets top table
 db.getTop = function(){
   return client.get('top').then(function(value){
