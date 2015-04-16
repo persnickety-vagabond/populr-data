@@ -35,7 +35,7 @@ app.get('/top', function(req, res){
 
 app.get('/people/*', function(req, res){
   db.getPerson(req.url.slice(8)).then(function(data){
-    res.json(data);
+    res.send(data);
   });  
 });
 
