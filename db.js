@@ -3,9 +3,9 @@ var db = {};
 
 // Creates client and connects
 var client = redis.createClient({
-  host: process.env.REDISCLOUD_URL || '',
+  host: process.env.REDISCLOUD_URL,
   port: '15340',
-  password: process.env.REDISCLOUD_PASSWORD || ''
+  password: process.env.REDISCLOUD_PASSWORD
 });
 // Gets top table
 db.getTop = function(){
