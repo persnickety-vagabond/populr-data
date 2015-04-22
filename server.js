@@ -1,14 +1,9 @@
 
-/****************
-  Server Config
-****************/
-
-/*
-  Sets up the routing for the server, sending each
-  API request to its associated controller
+/**
+*  Sets up the routing for the server, sending each
+*  API request to its associated controller
+*  @module server/api
 */
-
-/* * Imports * */
 
 var express = require('express');
 var bodyParser = require('body-parser');
@@ -36,7 +31,7 @@ app.get('/top', function(req, res){
 app.get('/people/*', function(req, res){
   db.getPerson(req.url.slice(8)).then(function(data){
     res.send(data);
-  });  
+  });
 });
 
 // app.post('/top', function(req, res){
@@ -47,7 +42,7 @@ app.get('/people/*', function(req, res){
 // app.post('/people', function(req, res){
 //   db.setPerson(req.body.firstName, req.body.details);
 //   res.send('OK');
-// });  
+// });
 
 
 var port = process.env.PORT || 9100;
